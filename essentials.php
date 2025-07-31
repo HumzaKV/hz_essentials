@@ -1,8 +1,8 @@
 <?php
 if (!function_exists('cf_log')) {
-    function cf_log($data, $filename = 'log_cronjob.txt')
+    function cf_log($data, $filename = 'log_cronjob', $fileext = 'txt' )
     {
-        $filePath = dirname(__FILE__) . '/logs/' . $filename;
+        $filePath = dirname(__FILE__) . '/logs/' . $filename.'.'.$fileext;
         $data     = print_r($data, true);
         $data .= ' -- -- -- ' . current_time('mysql');
         $myfile = file_put_contents($filePath, (string) $data . PHP_EOL, FILE_APPEND | LOCK_EX);
