@@ -1,4 +1,5 @@
 <?php
+// Version: 1.0.0
 if (!function_exists('cf_log')) {
     function cf_log($data, $filename = 'log_cronjob', $fileext = 'txt' )
     {
