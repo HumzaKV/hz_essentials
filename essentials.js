@@ -4,6 +4,7 @@ var host = window.location.host; //gvelondon.com
 var pathArray = window.location.pathname.split('/'); //returns object ['', 'cars', ''] 
 var urlParams = new URLSearchParams(window.location.search);
 
+
 function qp_has(key) {
     return urlParams.has(key);
 }
@@ -14,4 +15,8 @@ function qp_get(key) {
 
 function qp_add(key, value) {
     return urlParams.append(key, value);
+}
+
+function get_path_array(index = 1) {
+    return pathArray[index];
 }
