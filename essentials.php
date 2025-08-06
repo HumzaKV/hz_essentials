@@ -28,3 +28,21 @@ if (!function_exists('cf_log')) {
         $myfile = file_put_contents($filePath, (string) $data . PHP_EOL, FILE_APPEND | LOCK_EX);
     }
 }
+
+function hz_get_user_field( $field = '', $user_id = 0 ){
+
+    if( $user_id > 0 ){
+        
+        $userdata = get_userdata( $user_id );
+        if( !empty( $userdata ) && !empty( $field ) ){
+            return isset( $userdata->$field ) ? $userdata->$field : '' ;
+        }
+        else{
+            return '';
+        }
+    }
+    else{
+        return 'Invalid user id';
+    }
+
+}
