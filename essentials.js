@@ -14,7 +14,17 @@ function qp_get(key) {
 }
 
 function qp_add(key, value) {
-    return urlParams.append(key, value);
+    // 1. Create URLSearchParams object from current query string
+    const searchParams = new URLSearchParams(window.location.search);
+
+    // 2. Set a new key-value pair (or update an existing one)
+    searchParams.set( key, value );
+
+    // 3. Construct the new URL
+    const newUrl = `${window.location.pathname}?${searchParams.toString()}`;
+
+    // 4. Update the browser's history
+    history.pushState(null, '', newUrl);
 }
 
 function get_path_array(index = 1) {
