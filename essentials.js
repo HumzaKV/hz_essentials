@@ -13,6 +13,10 @@ function qp_get(key) {
     return urlParams.get(key);
 }
 
+function qp_add_hidden(key, value) {
+    return urlParams.append(key, value);
+}
+
 function qp_add(key, value) {
     // 1. Create URLSearchParams object from current query string
     const searchParams = new URLSearchParams(window.location.search);
