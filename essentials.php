@@ -1,5 +1,5 @@
 <?php
-// Version: 1.0.1
+// Version: 1.0.2
 
 if (!function_exists('pre')) {
     function pre($data, $die = 0) {
@@ -12,11 +12,14 @@ if (!function_exists('pre')) {
 }
 
 if (!function_exists('cf_log')) {
-    function cf_log($data, $filename = 'log_cronjob', $fileext = 'txt' ){
+    function cf_log($data, $filename = 'cronjob', $fileext = 'txt', $log = true, $time = false ){
         $directory = dirname(__FILE__) . '/logs/';
-        $filePath =  $directory. $filename.'.'.$fileext;
+        $log = $log === true ? 'log_' :'';
+        $filePath = $directory. $log . $filename.'.'.$fileext;
         $data = print_r($data, true);
-        $data .= ' -- -- -- ' . current_time('mysql');
+        if( $time === true ){
+            $data .= ' -- -- -- ' . current_time('mysql');
+        }
         $data .= '<br>';
         ob_start();
         pre( $data );
