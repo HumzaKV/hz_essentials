@@ -14,8 +14,8 @@ if (!function_exists('pre')) {
 if (!function_exists('cf_log')) {
     function cf_log($data, $filename = 'cronjob', $fileext = 'txt', $log = true, $time = false ){
         $directory = dirname(__FILE__) . '/logs/';
-        $log = $log === true ? 'log_' :'';
-        $filePath = $directory. $log . $filename.'.'.$fileext;
+        $log_txt = $log === true ? 'log_' :'';
+        $filePath = $directory. $log_txt . $filename.'.'.$fileext;
         $data = print_r($data, true);
         if( $time === true ){
             $data .= ' -- -- -- ' . current_time('mysql');
